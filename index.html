@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Black Jack</title>
+  </head>
+
+  <body>
+    <main class="blackjack">
+      <header class="blackjack__header">
+        <h1 class="blackjack__title">Black Jack</h1>
+      </header>
+
+      <section class="blackjack__main">
+        <!-- 🎮 Controles -->
+        <div class="blackjack__controls">
+          <button class="blackjack__btn blackjack__btn--new" data-action="new">Nuevo juego</button>
+          <button class="blackjack__btn blackjack__btn--hit" data-action="hit">Pedir carta</button>
+          <button class="blackjack__btn blackjack__btn--stand" data-action="stand">Detener</button>
+        </div>
+
+        <!-- 👥 Jugadores -->
+        <div class="blackjack__players">
+          <!-- Jugador -->
+          <div
+            class="blackjack__player blackjack__player--player"
+            data-player="player"
+          >
+            <h2 class="blackjack__player-heading">
+              Jugador 1 - Puntaje:
+              <span class="blackjack__score-value" data-score="player">0</span>
+            </h2>
+            <div class="blackjack__cards" data-cards="player"></div>
+          </div>
+
+          <!-- Computadora -->
+          <div
+            class="blackjack__player blackjack__player--computer"
+            data-player="computer"
+          >
+            <h2 class="blackjack__player-heading">
+              Computadora - Puntaje:
+              <span class="blackjack__score-value" data-score="computer"
+                >0</span
+              >
+            </h2>
+            <div class="blackjack__cards" data-cards="computer"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./assets/js/main.js"></script>
+  </body>
+</html>
