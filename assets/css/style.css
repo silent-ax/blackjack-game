@@ -1,116 +1,194 @@
-/* Normalización de estilos */
+/* ----------------------------- */
+/* 🎨 Estilos base y variables   */
+/* ----------------------------- */
+:root {
+  --color-bg: #0d1117;
+  --color-surface: #161b22;
+  --color-accent: #00ffc6;
+  --color-accent-dark: #00b38f;
+  --color-text: #f0f6fc;
+  --color-muted: #8b949e;
+  --color-error: #ff4b4b;
+
+  --font-main: 'Poppins', sans-serif;
+  --radius: 1rem;
+  --transition: 0.3s ease;
+}
+
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-body {
-  /* background-color: rgba(0, 0, 0, 0.7); */
-  color: white;
-  font-family: Arial, sans-serif;
-}
-
-/* ========= Blackjack component (BEM) ========= */
-.blackjack {
-}
-
-.blackjack__header {
-  background-color: black;
-}
-
-.blackjack__title {
-  text-align: center;
-  padding: 1rem;
-}
-
-.blackjack__main {
-  background-color: rgb(3, 78, 3);
+html, body {
   min-height: 100vh;
-}
-
-.blackjack__controls {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-main);
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 2rem;
 }
 
-.blackjack__btn {
-  border: none;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  margin: 0 0.5rem;
-  font-size: 1rem;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
+/* ----------------------------- */
+/* 🎴 Layout principal           */
+/* ----------------------------- */
+.blackjack {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: 0 0 30px rgba(0, 255, 198, 0.2);
+  width: 100%;
+  max-width: 900px;
+  padding: 2rem;
+  animation: fadeIn 0.6s ease-out;
 }
 
-.blackjack__btn:disabled {
-  background: gray;
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-.blackjack__btn:hover {
-  filter: brightness(0.9);
-}
-
-.blackjack__btn--new {
-  background: #2d9f4a;
-}
-.blackjack__btn--hit {
-  background: #1e90ff;
-}
-.blackjack__btn--stand {
-  background: #e74c3c;
-}
-
-.blackjack__players {
-  width: 90%;
-  margin: 0 auto;
-}
-
-.blackjack__player:not(:last-child) {
+/* ----------------------------- */
+/* 🏷️ Encabezado                */
+/* ----------------------------- */
+.blackjack__header {
+  text-align: center;
   margin-bottom: 2rem;
 }
 
-.blackjack__player--player {
-  border: 1px solid rgba(45, 159, 74, 0.12);
+.blackjack__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--color-accent);
+  text-shadow: 0 0 15px rgba(0, 255, 198, 0.6);
 }
-.blackjack__player--computer {
-  border: 1px solid rgba(231, 76, 60, 0.08);
+
+/* ----------------------------- */
+/* 🎮 Controles (botones)       */
+/* ----------------------------- */
+.blackjack__controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.blackjack__btn {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  color: var(--color-bg);
+  background: var(--color-accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.blackjack__btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px var(--color-accent);
+}
+
+.blackjack__btn--hit {
+  background: #4e9cff;
+}
+
+.blackjack__btn--stand {
+  background: #ffcc00;
+}
+
+.blackjack__btn--new {
+  background: var(--color-accent-dark);
+}
+
+/* ----------------------------- */
+/* 👥 Jugadores                 */
+/* ----------------------------- */
+.blackjack__players {
+  display: grid;
+  gap: 2rem;
+}
+
+.blackjack__player {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: background var(--transition);
+}
+
+.blackjack__player:hover {
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .blackjack__player-heading {
+  font-size: 1.2rem;
   margin-bottom: 1rem;
+  color: var(--color-accent);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .blackjack__score-value {
+  color: var(--color-text);
   font-weight: bold;
+  font-size: 1.3rem;
 }
 
+/* ----------------------------- */
+/* 🃏 Cartas                    */
+/* ----------------------------- */
 .blackjack__cards {
-  padding-left: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  min-height: 100px;
+  align-items: center;
+  justify-content: center;
 }
 
-.blackjack__card {
-  position: relative;
-  display: inline-block;
-  width: 7rem;
-  margin-left: -3rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.blackjack__cards img {
+  width: 80px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 255, 198, 0.3);
+  transition: transform var(--transition);
 }
 
-
-/* Utility / helpers (small) */
-.visually-hidden {
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-  white-space: nowrap;
+.blackjack__cards img:hover {
+  transform: scale(1.1);
 }
 
-/* End Blackjack component */
+/* ----------------------------- */
+/* 📱 Responsivo                */
+/* ----------------------------- */
+@media (max-width: 600px) {
+  .blackjack {
+    padding: 1.5rem;
+  }
+
+  .blackjack__btn {
+    flex: 1 1 100%;
+  }
+
+  .blackjack__cards img {
+    width: 60px;
+  }
+}
+
+/* ----------------------------- */
+/* ✨ Animaciones               */
+/* ----------------------------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
